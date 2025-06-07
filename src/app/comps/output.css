@@ -1,0 +1,8 @@
+.completed {
+  background-color: lime !important;
+  color: black !important;
+}
+.uncompleted {
+  background-color: gray !important;
+  color: white !important;
+}
