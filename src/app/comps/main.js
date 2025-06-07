@@ -14,9 +14,6 @@ function Main() {
       settasks(JSON.parse(localStorage.getItem("tasks")));
       setid(JSON.parse(localStorage.getItem("id")));
     }
-    if (tasks.length == 0) {
-      setid(0);
-    }
   }, []);
   return (
     <div
