@@ -1,13 +1,15 @@
 function Inputs({ input, setinput, tasks, settasks, id, setid }) {
   function handleadd() {
-    let array = [...tasks];
-    let localid = id + 1;
-    array.push({ id: id, title: input, complete: false });
-    setid(localid);
-    settasks(array);
-    setinput("");
-    localStorage.setItem("tasks", JSON.stringify(array));
-    localStorage.setItem("id", JSON.stringify(localid));
+    if (input.length != 0) {
+      let array = [...tasks];
+      let localid = id + 1;
+      array.push({ id: id, title: input, complete: false });
+      setid(localid);
+      settasks(array);
+      setinput("");
+      localStorage.setItem("tasks", JSON.stringify(array));
+      localStorage.setItem("id", JSON.stringify(localid));
+    }
   }
   return (
     <div
