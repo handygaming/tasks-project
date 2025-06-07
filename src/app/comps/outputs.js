@@ -1,5 +1,8 @@
+"use client";
+import { useRef } from "react";
 import "./output.css";
 function Outputs({ input, setinput, tasks, settasks, id, setid }) {
+  let title = useRef(null);
   // delete
   function handledelete(e) {
     let array = [...tasks].filter((i) => {
@@ -18,8 +21,6 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
   //complete
   function handlecomplete(item, btn) {
     if (item.complete == false) {
-      btn.style.backgroundColor = "lime";
-      btn.style.color = "black";
       let array = [...tasks];
       for (let test of array) {
         if (test.id == item.id) {
@@ -27,11 +28,10 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
         }
       }
       settasks(array);
+      // title.current.style.textDecoration = "line-through";
       localStorage.setItem("tasks", JSON.stringify(array));
       localStorage.setItem("id", JSON.stringify(id));
     } else {
-      btn.style.backgroundColor = "gray";
-      btn.style.color = "white";
       let array = [...tasks];
       for (let test of array) {
         if (test.id == item.id) {
@@ -39,6 +39,7 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
         }
       }
       settasks(array);
+      // title.current.style.textDecoration = "none";
       localStorage.setItem("tasks", JSON.stringify(array));
       localStorage.setItem("id", JSON.stringify(id));
     }
@@ -58,9 +59,16 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
           display: "flex",
           alignItems: "center",
           marginBottom: "20px",
+          position: "relative",
         }}
       >
-        <p style={{ width: "inherit" }}>{e.title}</p>
+        <p
+          style={{ width: "inherit" }}
+          ref={title}
+          className={e.complete == true ? "line" : "unline"}
+        >
+          {e.title}
+        </p>
         <button
           onClick={(a) => handlecomplete(e, a.currentTarget)}
           style={{
@@ -82,7 +90,7 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
           style={{
             width: "100px",
             height: "30px",
-            backgroundColor: "red",
+            backgroundColor: "rgb(172, 0, 0)",
             outline: "none",
             border: "none",
             borderRadius: "5px",
@@ -99,6 +107,7 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
       style={{
         height: "calc(100% - 30px)",
         overflowY: "auto",
+        overflowX: "hidden",
         marginBottom: "10px",
       }}
     >

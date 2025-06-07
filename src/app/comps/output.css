@@ -6,6 +6,12 @@
   background-color: gray !important;
   color: white !important;
 }
+.line {
+  text-decoration: line-through;
+}
+.unline {
+  text-decoration: none;
+}
 ::-webkit-scrollbar {
   width: 5px;
 }
