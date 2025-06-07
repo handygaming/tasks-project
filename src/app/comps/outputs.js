@@ -97,7 +97,9 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
   return (
     <div
       style={{
-        height: "calc(100% - 20px)",
+        height: "calc(100% - 30px)",
+        overflowY: "auto",
+        marginBottom: "10px",
       }}
     >
       {show}
