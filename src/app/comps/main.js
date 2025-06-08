@@ -6,13 +6,11 @@ import Outputs from "./outputs";
 function Main() {
   let [tasks, settasks] = useState([]);
   let [input, setinput] = useState("");
-  let [id, setid] = useState(0);
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("tasks")) == null) {
       localStorage.setItem("tasks", "[]");
     } else {
       settasks(JSON.parse(localStorage.getItem("tasks")));
-      setid(JSON.parse(localStorage.getItem("id")));
     }
   }, []);
   return (
@@ -31,16 +29,12 @@ function Main() {
         setinput={setinput}
         tasks={tasks}
         settasks={settasks}
-        id={id}
-        setid={setid}
       />
       <Inputs
         input={input}
         setinput={setinput}
         tasks={tasks}
         settasks={settasks}
-        id={id}
-        setid={setid}
       />
     </div>
   );

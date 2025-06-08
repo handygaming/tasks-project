@@ -1,14 +1,12 @@
+import { v4 as uuidv4 } from "uuid";
 function Inputs({ input, setinput, tasks, settasks, id, setid }) {
   function handleadd() {
     if (input.length != 0) {
       let array = [...tasks];
-      let localid = id + 1;
-      array.push({ id: id, title: input, complete: false });
-      setid(localid);
+      array.push({ id: uuidv4(), title: input, complete: false });
       settasks(array);
       setinput("");
       localStorage.setItem("tasks", JSON.stringify(array));
-      localStorage.setItem("id", JSON.stringify(localid));
     }
   }
   return (

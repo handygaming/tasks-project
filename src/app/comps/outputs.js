@@ -2,7 +2,6 @@
 import { useRef } from "react";
 import "./output.css";
 function Outputs({ input, setinput, tasks, settasks, id, setid }) {
-  let title = useRef(null);
   // delete
   function handledelete(e) {
     if (confirm("Do You Want To delete This Task ??")) {
@@ -11,10 +10,6 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
       });
       settasks(array);
       localStorage.setItem("tasks", JSON.stringify(array));
-      localStorage.setItem("id", JSON.stringify(id));
-      if (tasks.length == 1) {
-        setid(0);
-      }
     }
   }
   // **delete**
@@ -29,9 +24,7 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
         }
       }
       settasks(array);
-      // title.current.style.textDecoration = "line-through";
       localStorage.setItem("tasks", JSON.stringify(array));
-      localStorage.setItem("id", JSON.stringify(id));
     } else {
       let array = [...tasks];
       for (let test of array) {
@@ -40,9 +33,7 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
         }
       }
       settasks(array);
-      // title.current.style.textDecoration = "none";
       localStorage.setItem("tasks", JSON.stringify(array));
-      localStorage.setItem("id", JSON.stringify(id));
     }
   }
   //**complete**
@@ -65,7 +56,6 @@ function Outputs({ input, setinput, tasks, settasks, id, setid }) {
       >
         <p
           style={{ width: "inherit" }}
-          ref={title}
           className={e.complete == true ? "line" : "unline"}
         >
           {e.title}
