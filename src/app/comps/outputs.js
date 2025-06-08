@@ -4,7 +4,7 @@ import "./output.css";
 function Outputs({ input, setinput, tasks, settasks, id, setid }) {
   // delete
   function handledelete(e) {
-    if (confirm("Do You Want To delete This Task ??")) {
+    if (confirm("Do You Want To Delete This Task ??")) {
       let array = [...tasks].filter((i) => {
         return i.id != e;
       });
