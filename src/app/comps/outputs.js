@@ -1,16 +1,20 @@
 "use client";
 import { useRef } from "react";
 import "./output.css";
-function Outputs({ input, setinput, tasks, settasks, id, setid }) {
+function Outputs({
+  input,
+  setinput,
+  tasks,
+  settasks,
+  id,
+  setid,
+  open,
+  setopen,
+}) {
   // delete
   function handledelete(e) {
-    if (confirm("Do You Want To Delete This Task ??")) {
-      let array = [...tasks].filter((i) => {
-        return i.id != e;
-      });
-      settasks(array);
-      localStorage.setItem("tasks", JSON.stringify(array));
-    }
+    setopen("block");
+    setid(e);
   }
   // **delete**
 

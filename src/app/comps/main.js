@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Inputs from "./inputs";
 import Outputs from "./outputs";
+import Confirm from "./confirm";
 
 function Main() {
   let [tasks, settasks] = useState([]);
@@ -13,6 +14,11 @@ function Main() {
       settasks(JSON.parse(localStorage.getItem("tasks")));
     }
   }, []);
+
+  // confirm
+  let [open, setopen] = useState("none");
+  let [id, setid] = useState();
+  // **confirm**
   return (
     <div
       style={{
@@ -24,17 +30,33 @@ function Main() {
         border: "10px white solid",
       }}
     >
+      <Confirm
+        open={open}
+        setopen={setopen}
+        id={id}
+        setid={setid}
+        tasks={tasks}
+        settasks={settasks}
+      />
       <Outputs
         input={input}
         setinput={setinput}
         tasks={tasks}
         settasks={settasks}
+        open={open}
+        setopen={setopen}
+        id={id}
+        setid={setid}
       />
       <Inputs
         input={input}
         setinput={setinput}
         tasks={tasks}
         settasks={settasks}
+        open={open}
+        setopen={setopen}
+        id={id}
+        setid={setid}
       />
     </div>
   );

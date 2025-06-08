@@ -1,5 +1,14 @@
 import { v4 as uuidv4 } from "uuid";
-function Inputs({ input, setinput, tasks, settasks, id, setid }) {
+function Inputs({
+  input,
+  setinput,
+  tasks,
+  settasks,
+  id,
+  setid,
+  open,
+  setopen,
+}) {
   function handleadd() {
     if (input.length != 0) {
       let array = [...tasks];
